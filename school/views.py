@@ -50,8 +50,8 @@ class TeachersListView(generic.ListView):
     queryset = User.objects.filter(user_type='T')
 
 def teacher(request, teacher_id):
-    single_car = get_object_or_404(User.objects.filter(user_type='T'), pk=teacher_id)
-    return render(request, 'teacher.html', {'teacher': single_car})
+    single_teacher = get_object_or_404(User.objects.filter(user_type='T'), pk=teacher_id)
+    return render(request, 'teacher.html', {'teacher': single_teacher})
 
 
 def search(request):

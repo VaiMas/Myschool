@@ -17,9 +17,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                        {% for subject in teacher_subject %}
+                        {% for subject in teacher.subjects.all %}
                         <tr>
-                                <td class="align-middle">{{ subject.name }}</td>
+                                <td class="align-middle">{{ subject.subject.name }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>

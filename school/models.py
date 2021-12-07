@@ -107,7 +107,7 @@ class Subject(models.Model):
         verbose_name_plural = 'Subjects'
 
 class Teacher_subject(models.Model):
-    teacher = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    teacher = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='subjects')
     subject = models.ForeignKey('Subject', verbose_name='Subject', on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
