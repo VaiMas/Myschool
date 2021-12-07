@@ -11,7 +11,7 @@ from django.db.models import Q, F
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.utils.translation import gettext as _
-import json
+from django.db.models import Avg
 
 
 User = get_user_model()
@@ -68,6 +68,11 @@ class GradesByUserListView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         return Subject_grade.objects.filter(student=self.request.user)
 
+    def get_context_data(self, *args, **kwargs):
+        context = super(GradesByUserListView, self).get_context_data(**kwargs)
+        context['average'] = Subject_grade.objects.all().aggregate(Avg('grade'))
+        return context
+
 
 class GradeByUserCreateView(LoginRequiredMixin, generic.CreateView):
     model = Subject_grade
@@ -97,5 +102,5 @@ from collections import defaultdict
 class LessonsByUserListView(LoginRequiredMixin, generic.ListView):
     model = Subject_grade
     template_name = 'user_lessons.html'
-    paginate_by = 3
+    paginate_by = 5
 

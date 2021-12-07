@@ -151,13 +151,6 @@ class Subject_grade(models.Model):
         verbose_name_plural = 'Subject grades'
         ordering = ['-date']
 
-    # @property
-    # def student_average(self):
-    #     sum = 0
-    #     grade = Subject_grade.objects.filter(order=self.id)
-    #     for line in orderline:
-    #         sum += line.service.price * line.qty
-    #     return sum
 
 
 
