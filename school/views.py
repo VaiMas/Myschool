@@ -102,5 +102,5 @@ from collections import defaultdict
 class LessonsByUserListView(LoginRequiredMixin, generic.ListView):
     model = Subject_grade
     template_name = 'user_lessons.html'
-    paginate_by = 10
+
 

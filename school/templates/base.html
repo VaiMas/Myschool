@@ -27,9 +27,6 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'teachers'%}">{% trans "Teacher" %}</a>
       </li>
-        <li class="nav-item">
-        <a class="nav-link" href="/">{% trans "Student" %}</a>
-      </li>
         </ul>
       {% if user.is_authenticated %}
       <div class="collapse navbar-collapse">
@@ -43,7 +40,7 @@
           {% if user.user_type == 'S' %}
       <li class="nav-item"><a class="nav-link" href="{% url 'my-grades' %}">{% trans "My grades" %}</a></li>
           {% else %}
-          <li class="nav-item"><a class="nav-link" href="{% url 'my-lessons' %}">{% trans "My Lessons" %}</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'my-lessons' %}">{% trans "My Students" %}</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'grade-new'%}?next=/school">{% trans "New Grade" %}</a></li>
           {% endif %}
       <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}?next=/school">{% trans "Logout" %}</a></li>

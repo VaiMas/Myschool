@@ -12,7 +12,8 @@
                 <i class="fa fa-align-justify"></i>{% trans "Students:" %}
             </div>
             <div class="card-body">
-                <table class="table table-responsive-sm table-bordered table-striped table-sm text-nowrap">
+                <input class="mb-3" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                <table id="myTable" class="table table-responsive-sm table-bordered table-striped table-sm text-nowrap">
                     <thead>
                     <tr>
                         <th>{% trans "Date" %}</th>
@@ -82,4 +83,28 @@
         {% endif %}
     </div>
 </div>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, cell, i, j;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length; i++) {
+    // Hide the row initially.
+    tr[i].style.display = "none";
+
+    td = tr[i].getElementsByTagName("td");
+    for (var j = 0; j < td.length; j++) {
+      cell = tr[i].getElementsByTagName("td")[j];
+      if (cell) {
+        if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+          break;
+        }
+      }
+    }
+  }
+}
+</script>
 {% endblock %}tml>
