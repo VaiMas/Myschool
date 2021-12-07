@@ -63,7 +63,7 @@ def search(request):
 class GradesByUserListView(LoginRequiredMixin, generic.ListView):
     model = Subject_grade
     template_name = 'user_grades.html'
-    paginate_by = 2
+    paginate_by = 5
 
     def get_queryset(self):
         return Subject_grade.objects.filter(student=self.request.user)
@@ -102,5 +102,5 @@ from collections import defaultdict
 class LessonsByUserListView(LoginRequiredMixin, generic.ListView):
     model = Subject_grade
     template_name = 'user_lessons.html'
-    paginate_by = 5
+    paginate_by = 10
 

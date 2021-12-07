@@ -12,7 +12,7 @@
         <div class="card">
             <div class="card-header">
                 {% for key, value in average.items %}
-                <i class="fa fa-align-justify"></i><strong>{% trans "Your Average is:" %} {{ value }}</strong>
+                <i class="fa fa-align-justify"></i><strong>{% trans "Your Average is:" %} {{ value|floatformat:"1" }}</strong>
                 {% endfor %}
             </div>
             <div class="card-body">

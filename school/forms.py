@@ -17,8 +17,12 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['photo']
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
 class NewGradeForm(forms.ModelForm):
     class Meta:
+        widgets = {'date': DateInput()}
         model = Subject_grade
         fields = '__all__'
 
