@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<div class="container teacher">
+    <img class="rounded-circle" src="{{teacher.profile.photo.url}}">
+    <h4>{{ teacher.fname }} {{ teacher.lname }}</h4>
+    <div class="row text-dark">
+    <div class="col col-lg-6">
+        <div class="card">
+    <div class="card-body">
+                <table class="table table-responsive-sm table-bordered table-striped table-sm text-nowrap">
+                    <thead>
+                    <tr>
+                        <th>{% trans "Subjects:"%}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for subject in teacher_subject %}
+                        <tr>
+                                <td class="align-middle">{{ subject.name }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+</div>
+               </div>
+    </div>
+</div>
+
+{% endblock %}

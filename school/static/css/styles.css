@@ -1,0 +1,37 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Offside', cursive;
+    list-style: none;
+    }
+
+body {background-image: linear-gradient(rgba(83, 70, 31, 0.7),rgba(83, 70, 31, 0.7)), url(../img/fonas.jpg);
+    background-size: cover;
+    color: white;
+
+}
+
+nav img{
+    height: 100px;
+    }
+
+nav a{
+font-size: 20px;
+margin-left: 10px;
+}
+
+li a {
+list-style: none;
+}
+
+li a:link {
+  text-decoration: none;
+}
+
+.lang{
+margin: 5px;
+padding: 5px;
+}
+
+

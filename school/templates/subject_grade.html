@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+  <h1>{% trans "Subjects:"%}</h1>
+  {% if subject_grade_list %}
+  <ul>
+    {% for subject in subject_grade_list %}
+      <li>
+        <a href="{{ subject_grade_id }}">{{ subject.student.fname }} {{ subject.student.lname }} {{ subject.teacher_subject.subject.name }} {{ subject.grade.grade }}</a>
+
+      </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+{% endblock %}

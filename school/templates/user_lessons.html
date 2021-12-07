@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+<h1>{% trans "Your Students:" %}</h1>
+<div class="row text-dark">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i>{% trans "Students:" %}
+            </div>
+            <div class="card-body">
+                <table class="table table-responsive-sm table-bordered table-striped table-sm text-nowrap">
+                    <thead>
+                    <tr>
+                        <th>{% trans "Date" %}</th>
+                        <th>{% trans "First Name" %}</th>
+                        <th>{% trans "Last Name" %}</th>
+                        <th>{% trans "Subject" %}</th>
+                        <th>{% trans "Grade" %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for subject in subject_grade_list %}
+                            {% if subject.teacher_subject.teacher == user %}
+                                <td class="align-middle">{{ subject.date }}</td>
+                                <td class="align-middle">{{ subject.student.fname }}</td>
+                                <td class="align-middle">{{ subject.student.lname }}</td>
+                                <td class="align-middle">{{ subject.teacher_subject.subject.name }}</td>
+                                <td class="align-middle">{{ subject.grade }}</td>
+                                <td>
+                                    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'grade-update' subject.id %}">{% trans "Edit" %}</a>
+                                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'grade-delete' subject.id %}">{% trans "Delete" %}</a>
+                                </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        {% if page_obj.has_other_pages %}
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a href="?page={{page_obj.previous_page_number}}" class="page-link">{% trans "Prev"%}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link">{% trans "Prev"%}</a>
+                    </li>
+                {% endif %}
+                {% for i in page_obj.paginator.page_range %}
+                    {% if page_obj.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link">{{ i }}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a href="?page={{ i }}" class="page-link">{{ i }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a href="?page={{page_obj.next_page_number}}" class="page-link">{% trans "Next" %}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link">{% trans "Next" %}</a>
+                    </li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}tml>
